@@ -17,15 +17,19 @@ class MoviesController < ApplicationController
 
 	def update
 		@movie = Movie.find(params[:id])
-
 		@movie.update(movie_params)
-
 		redirect_to @movie
 	end
 
 	def create
 		@movie = Movie.create(movie_params)
 		redirect_to @movie
+	end
+
+	def destroy
+		@movie = Movie.find(params[:id])
+		@movie.destroy
+		redirect_to movies_url
 	end
 
 
