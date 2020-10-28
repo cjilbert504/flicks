@@ -3,13 +3,17 @@
   <head>
     <title>Flicks</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <%= render "layouts/header" %>
+
   <body>
+    <%= render "layouts/sidebar" %>
     <%= yield %>
   </body>
-  <%= render "movies/footer" %>
+
+  <%= render "layouts/footer" %>
+
 </html>
