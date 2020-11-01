@@ -18,7 +18,7 @@ describe "Editing a movie" do
     click_button 'Update Movie'
 
     expect(current_path).to eq(movie_path(movie))
-
+    expect(page).to have_text('Movie successfully updated!')
     expect(page).to have_text('Updated Movie Title')
   end
 
