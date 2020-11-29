@@ -11,13 +11,13 @@ RSpec.describe "Editing a user's details" do
 		click_link "Edit Account"
 
 		expect(current_path).to eq(edit_user_path(@user))
-		expect(find_field('Name').value).to eq(user.name)
+		expect(find_field('Name').value).to eq(@user.name)
 
     fill_in "Name", with: "Updated User Name"
 
     click_button "Update Account"
 
-    expect(current_path).to eq(user_path(user))
+    expect(current_path).to eq(user_path(@user))
 
     expect(page).to have_text("Updated User Name")
     expect(page).to have_text('Account successfully updated!')
