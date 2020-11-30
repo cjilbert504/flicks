@@ -6,6 +6,7 @@ RSpec.describe "Viewing a user's profile page" do
 
 		visit user_url(user)
 		
+		expect(page).to have_text(user.username)
 		expect(page).to have_text(user.name)
 		expect(page).to have_text(user.email)
 		expect(page).to have_text("Member since - November 2020")
