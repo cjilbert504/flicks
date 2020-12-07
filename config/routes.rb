@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/signup" => "users#new"
   resources :users
 
+  get "/signin" => "sessions#new"
   resource :session
 
   resources :movies do
