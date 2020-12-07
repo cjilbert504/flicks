@@ -9,6 +9,6 @@ RSpec.describe "Viewing a user's profile page" do
 		expect(page).to have_text(user.username)
 		expect(page).to have_text(user.name)
 		expect(page).to have_text(user.email)
-		expect(page).to have_text("Member since - November 2020")
+		expect(page).to have_text("Member since - #{Time.now.strftime("%B %Y")}")
 	end
 end
