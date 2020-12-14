@@ -3,9 +3,13 @@
     <h1><%= link_to 'Flicks', root_path %></h1>
     <nav>
       <p>
-        <%= session[:user_id]  %>
-        <%= link_to 'Sign Up', signup_path, class: 'button' %>
-        <%= link_to 'Sign In', signin_path, class: 'button' %>
+        <% if current_user %>
+          <%= link_to current_user.name, current_user  %>
+          <%= link_to "Account Setting", edit_user_path(current_user)  %>
+        <% else %>
+          <%= link_to 'Sign Up', signup_path, class: 'button' %>
+          <%= link_to 'Sign In', signin_path, class: 'button' %>
+        <% end %>
       </p>
     </nav>
   </div>
