@@ -3,6 +3,7 @@
     <h1><%= link_to 'Flicks', root_path %></h1>
     <nav>
       <p>
+        <%= session[:user_id]  %>
         <%= link_to 'Sign Up', signup_path, class: 'button' %>
         <%= link_to 'Sign In', signin_path, class: 'button' %>
       </p>
