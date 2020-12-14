@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Editing a user's details" do
 	before do
 		@user = User.create!(user_attributes)
+		sign_in(@user)
 	end
 
 	it "updates the user and shows the updated user's details" do
