@@ -45,7 +45,7 @@ describe UsersController do
 
   context "when signed in as the wrong user" do
     before do
-      @wrong_user = User.create!(user_attributes(email: "wrong@example.com", username: "wrong"))
+      @wrong_user = User.create!(user_attributes(email: "wrong@example.com", username: "Wrong"))
       session[:user_id] = @wrong_user.id
     end
   
