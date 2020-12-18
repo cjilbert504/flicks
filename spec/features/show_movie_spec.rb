@@ -30,4 +30,18 @@ describe "Viewing an individual movie" do
     expect(page).to have_text("Flop!")
   end
 
+  context "non-admin attempting to edit or delete a movie" do
+    before do
+			non_admin = User.create!(user_attributes(admin: false))
+			sign_in(non_admin)
+    end
+    
+    it "doesn't show the link to add a new movie" do
+      movie = Movie.create(movie_attributes)
+      visit movie_url(movie)
+
+      expect(page).not_to have_link("Edit")
+      expect(page).not_to have_link("Delete")
+    end
+  end
 end

@@ -54,5 +54,17 @@ describe "Viewing the list of movies" do
     
     expect(page).not_to have_text(movie.title)
   end
-  
+
+  context "non-admin attempting to add a new movie" do
+    before do
+			non_admin = User.create!(user_attributes(admin: false))
+			sign_in(non_admin)
+    end
+
+    it "doesn't show the link to add a new movie" do
+      visit root_url
+
+      expect(page).not_to have_link("Add New Movie")
+    end
+  end
 end

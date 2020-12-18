@@ -111,3 +111,11 @@ movie.reviews.create!(name: "Peter Travers", stars: 4, comment: "It's been years
 
 movie = Movie.find_by(title: 'Superman')
 movie.reviews.create!(name: "Elvis Mitchell", stars: 5, comment: "It's a bird, it's a plane, it's a blockbuster!")
+
+User.create!({
+  username: "murdoch504",
+  name: "Example User",
+  email: "user@example.com",
+  password: "secret",
+  password_confirmation: "secret"
+})
