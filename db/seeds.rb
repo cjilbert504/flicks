@@ -6,6 +6,30 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+user1 = User.create!({
+  username: "1murdock504",
+  name: "Example User",
+  email: "1murdoch@example.com",
+  password: "secret",
+  password_confirmation: "secret"
+})
+
+user2 = User.create!({
+  username: "2murdock504",
+  name: "Example User",
+  email: "2murdoch@example.com",
+  password: "secret",
+  password_confirmation: "secret"
+})
+
+user3 = User.create!({
+  username: "3murdock504",
+  name: "Example User",
+  email: "3murdoch@example.com",
+  password: "secret",
+  password_confirmation: "secret"
+})
+
 Movie.create!([
   {
     title: 'Iron Man',
@@ -105,17 +129,9 @@ Movie.create!([
 ])
 
 movie = Movie.find_by(title: 'Iron Man')
-movie.reviews.create!(name: "Roger Ebert", stars: 3, comment: "I laughed, I cried, I spilled my popcorn!")
-movie.reviews.create!(name: "Gene Siskel", stars: 5, comment: "I'm a better reviewer than he is.")
-movie.reviews.create!(name: "Peter Travers", stars: 4, comment: "It's been years since a movie superhero was this fierce and this funny.")
+movie.reviews.create!(user_id: user1.id, stars: 3, comment: "I laughed, I cried, I spilled my popcorn!")
+movie.reviews.create!(user_id: user2.id, stars: 5, comment: "I'm a better reviewer than he is.")
+movie.reviews.create!(user_id: user3.id, stars: 4, comment: "It's been years since a movie superhero was this fierce and this funny.")
 
 movie = Movie.find_by(title: 'Superman')
-movie.reviews.create!(name: "Elvis Mitchell", stars: 5, comment: "It's a bird, it's a plane, it's a blockbuster!")
-
-User.create!({
-  username: "murdoch504",
-  name: "Example User",
-  email: "user@example.com",
-  password: "secret",
-  password_confirmation: "secret"
-})
+movie.reviews.create!(user_id: user1.id, stars: 5, comment: "It's a bird, it's a plane, it's a blockbuster!")

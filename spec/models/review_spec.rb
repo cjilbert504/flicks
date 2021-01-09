@@ -12,8 +12,9 @@ describe "A review" do
 
   it "with example attributes is valid" do
     movie = Movie.create(movie_attributes)
+    user = User.create(user_attributes)
 
-    review = Review.new(review_attributes)
+    review = Review.new(review_attributes(user_id: user.id))
 
     review.movie = movie
 

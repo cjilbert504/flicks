@@ -151,9 +151,10 @@ describe "A Movie" do
 	
 	it "deletes associated reviews" do
 		movie = Movie.create(movie_attributes)
+		user = User.create(user_attributes)
 	
-		movie.reviews.create(review_attributes)
-	
+		movie.reviews.create(review_attributes(user_id: user.id))
+		# byebug
 		expect {
 			movie.destroy
 		}.to change(Review, :count).by(-1)
@@ -161,10 +162,11 @@ describe "A Movie" do
 
 	it "calculates the average number of review stars" do
 		movie = Movie.create(movie_attributes)
+		user = User.create(user_attributes)
 	
-		movie.reviews.create(review_attributes(stars: 1))
-		movie.reviews.create(review_attributes(stars: 3))
-		movie.reviews.create(review_attributes(stars: 5))
+		movie.reviews.create(review_attributes(user_id: user.id, stars: 3))
+		movie.reviews.create(review_attributes(user_id: user.id, stars: 1))
+		movie.reviews.create(review_attributes(user_id: user.id, stars: 5))
 		
 		expect(movie.average_stars).to eq(3)
 	end
