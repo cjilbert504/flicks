@@ -154,7 +154,6 @@ describe "A Movie" do
 		user = User.create(user_attributes)
 	
 		movie.reviews.create(review_attributes(user_id: user.id))
-		# byebug
 		expect {
 			movie.destroy
 		}.to change(Review, :count).by(-1)
@@ -169,5 +168,17 @@ describe "A Movie" do
 		movie.reviews.create(review_attributes(user_id: user.id, stars: 5))
 		
 		expect(movie.average_stars).to eq(3)
+	end
+
+	it "has fans" do
+		movie = Movie.new(movie_attributes)
+		fan1 = User.new(user_attributes(email: "larry@example.com"))
+		fan2 = User.new(user_attributes(email: "moe@example.com"))
+	
+		movie.favorites.new(user: fan1)
+		movie.favorites.new(user: fan2)
+	
+		expect(movie.fans).to include(fan1)
+		expect(movie.fans).to include(fan2)
 	end
 end
