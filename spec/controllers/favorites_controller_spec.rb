@@ -13,13 +13,13 @@ RSpec.describe FavoritesController do
 		it "cannot access create" do
 			post :create, params: { movie_id: @movie }
 
-			expect(response).to redirect_to(new_seesion_url)
+			expect(response).to redirect_to(new_session_url)
 		end
 
 		it "cannot access destroy" do
 			delete :destroy, params: { id: 1, movie_id: @movie }
 
-			expect(response).to redirect_to(new_seesion_url)
+			expect(response).to redirect_to(new_session_url)
 		end
 	end
 end

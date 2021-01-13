@@ -12,7 +12,7 @@ class FavoritesController < ApplicationController
 		favorite = current_user.favorites.find(params[:id])
 		favorite.destroy
 
-		redirect_to @movie, notice: "Sorry to see you know longer like this movie!"
+		redirect_to @movie, notice: "Sorry you unfaved it!"
 	end
 
 	private
