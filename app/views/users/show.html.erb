@@ -37,7 +37,7 @@
 </article>
 
 
-<% content_for(:title, @user.username) %>
+<% title(@user.username) %>
 
 <% content_for :side do %>
   <% if @favorite_movies.any? %>
