@@ -7,17 +7,6 @@
     <h4><%= @user.created_at.strftime("Member since - %B %Y") %>
   </header>
 
-  <% if @favorite_movies.any? %>
-    <h3>Favorite Movies</h3>
-    <ul>
-    <% @favorite_movies.each do |movie| %>
-      <li>
-        <%= link_to movie.title, movie %>
-      </li>
-    <% end %>
-    </ul>
-  <% end %>
-
   <% if @reviews.any? %>
     <h3>Reviews</h3>
     <ol id="reviews">
@@ -46,3 +35,17 @@
     </nav>
   </footer>
 </article>
+
+
+<% content_for(:title, @user.username) %>
+
+<% content_for :side do %>
+  <% if @favorite_movies.any? %>
+    <h3>Favorite Movies</h3>
+    <ul>
+      <% @favorite_movies.each do |movie| %>
+        <li><%= link_to movie.title, movie %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

@@ -21,17 +21,6 @@
   <p>
     <%= pluralize(@fans.size, 'fan') %> 
   </p>
-
-  <% if @fans.any? %>
-  <h3>Fans</h3>
-  <ul>
-    <% @fans.each do |user| %>
-      <li>
-        <%= link_to user.name, user %>
-      </li>
-    <% end %>
-  </ul>
-  <% end %>
   
   <% if current_user %>
     <% if @current_favorite %>
@@ -40,13 +29,6 @@
       <%= button_to "Fave", movie_favorites_path(@movie), class: "button fave" %>
     <% end %>
   <% end %>
-
-  <h3>Genres</h3>
-  <ul>
-    <% @genres.each do |genre| %>
-      <li><%= genre.name %></li>
-    <% end %>
-  </ul>
 
   <h3>Cast</h3>
   <p>
@@ -77,3 +59,24 @@
     </nav>
   </footer>
 </article>
+
+
+<% content_for(:title, @movie.title) %>
+
+<% content_for :side do %>
+  <% if @fans.any? %>
+    <h3>Fans</h3>
+    <ul>
+      <% @fans.each do |user| %>
+        <li><%= link_to user.name, user %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <h3>Genres</h3>
+  <ul>
+    <% @genres.each do |genre| %>
+      <li><%= genre.name %></li>
+    <% end %>
+  </ul>
+<% end %>
