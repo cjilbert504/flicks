@@ -6,6 +6,12 @@
         <%= f.label :title %>
         <%= f.text_field :title, autofocus: true %>
       </li>
+      <% unless @movie.new_record? %>
+      <li>
+        <%= f.label :slug %>
+        <%= f.text_field :slug, size: 30 %>
+      </li>
+      <% end %>
       <li class="required">
         <%= f.label :description %>
         <%= f.text_area :description, cols: 40, rows: 7 %>
